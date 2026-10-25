@@ -15,7 +15,7 @@ Sistema para procesar informes con el patrón **Abstract Factory** (familia = ca
 | experimento | Cap. 5: `escala.py` (modelo de costes calibrado) + gráfica |
 | uml | Diagramas UML (PNG + fuente Graphviz) |
 
-## Uso (JDK 8+, probado con JDK 21)
+## Uso (JDK 8+, probado con JDK 17 y 21)
 - Ejecutar una etapa:        `./compilar_ejecutar.sh etapa3_pedido`
 - Pruebas automáticas (29):  `./probar.sh etapa4b_ajuste`
 - Experimento:               `python3 experimento/escala.py`   (requiere matplotlib)

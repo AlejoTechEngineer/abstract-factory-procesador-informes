@@ -39,7 +39,7 @@ flowchart TD
 
 ## Ejecución de los programas:
 
-1. Tener instalado **JDK 8 o superior** (probado con JDK 21).
+1. Tener instalado **JDK 8 o superior** (probado con JDK 17 y 21).
 2. Entrar a la carpeta `Actividad1_Patrones_Creacion_codigo/`.
 3. Ejecutar una etapa: `./compilar_ejecutar.sh etapa3_pedido`
 4. Ejecutar las pruebas automáticas: `./probar.sh etapa4b_ajuste`
