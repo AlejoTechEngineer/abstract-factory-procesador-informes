@@ -1,0 +1,45 @@
+digraph G {
+  rankdir=LR; nodesep=0.18; ranksep=0.55; fontname="DejaVu Sans"; splines=true; ordering=out;
+  node [fontname="DejaVu Sans"]; edge [fontname="DejaVu Sans", fontsize=8, color="#444444"];
+  Proc [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>ProcesadorInformes</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+procesarInformes(String[])</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">~crearInforme(String): Informe</FONT></TD></TR></TABLE>>];
+  Reg [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>FabricaRegistro</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+registrar(String, InformeFactory)</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+obtener(String): InformeFactory</FONT></TD></TR></TABLE>>];
+  Tipo [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="8">&lt;&lt;enumeration&gt;&gt;</FONT><BR/><FONT POINT-SIZE="12"><B>TipoInforme</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+crear(InformeFactory, String)</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+desdeCodigo(String)</FONT></TD></TR></TABLE>>];
+  IF [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="8">&lt;&lt;interface&gt;&gt;</FONT><BR/><FONT POINT-SIZE="12"><B><I>InformeFactory</I></B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+getCategoria(): String</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+crearFactura(String): Factura</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+crearCompra(String): Compra</FONT></TD></TR></TABLE>>];
+  EF [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>EntradaFactory</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+crearFactura(String)</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+crearCompra(String)</FONT></TD></TR></TABLE>>];
+  SF [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>SalidaFactory</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+crearFactura(String)</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+crearCompra(String)</FONT></TD></TR></TABLE>>];
+  Inf [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="8">&lt;&lt;interface&gt;&gt;</FONT><BR/><FONT POINT-SIZE="12"><B><I>Informe</I></B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+getNombre(): String</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+getCategoria(): String</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+getTipo(): String</FONT></TD></TR><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+procesar()</FONT></TD></TR></TABLE>>];
+  Fac [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="8">&lt;&lt;interface&gt;&gt;</FONT><BR/><FONT POINT-SIZE="12"><B><I>Factura</I></B></FONT></TD></TR><HR/><TR><TD CELLPADDING="1"><FONT POINT-SIZE="7"> </FONT></TD></TR></TABLE>>];
+  Com [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="8">&lt;&lt;interface&gt;&gt;</FONT><BR/><FONT POINT-SIZE="12"><B><I>Compra</I></B></FONT></TD></TR><HR/><TR><TD CELLPADDING="1"><FONT POINT-SIZE="7"> </FONT></TD></TR></TABLE>>];
+  FE [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>FacturaEntrada</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+procesar()</FONT></TD></TR></TABLE>>];
+  CE [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>CompraEntrada</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+procesar()</FONT></TD></TR></TABLE>>];
+  FS [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>FacturaSalida</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+procesar()</FONT></TD></TR></TABLE>>];
+  CS [shape=plain, label=<<TABLE BORDER="1" COLOR="#3A5A8C" CELLBORDER="0" CELLSPACING="0" BGCOLOR="white"><TR><TD ALIGN="CENTER" BGCOLOR="#FFFFFF" CELLPADDING="3"><FONT POINT-SIZE="12"><B>CompraSalida</B></FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" CELLPADDING="1"><FONT POINT-SIZE="9" FACE="DejaVu Sans Mono">+procesar()</FONT></TD></TR></TABLE>>];
+  Leg [shape=plain, label=<<TABLE BORDER="1" COLOR="#999999" CELLBORDER="0" CELLSPACING="2" CELLPADDING="3"><TR><TD COLSPAN="2"><B><FONT POINT-SIZE="9">Leyenda</FONT></B></TD></TR><TR><TD COLSPAN="2" ALIGN="LEFT"><FONT POINT-SIZE="8" COLOR="#555555">Nota: las clases concretas de producto<BR ALIGN="LEFT"/>extienden además InformeBase (omitida<BR ALIGN="LEFT"/>del diagrama por claridad).<BR ALIGN="LEFT"/></FONT></TD></TR></TABLE>>];
+  {rank=same; Proc; Reg; Tipo; IF; Leg;}
+  {rank=same; EF; SF;}
+  {rank=same; FE CE FS CS;}
+  {rank=same; Fac; Com;}
+  edge [style=invis];
+  {rank=same; Proc -> Reg -> Tipo -> IF -> Leg;}
+  {rank=same; EF -> SF;}
+  {rank=same; FE -> CE -> FS -> CS;}
+  {rank=same; Fac -> Com;}
+  edge [style=solid];
+  Proc -> IF [style=dashed, arrowhead=vee, label="«usa»", constraint=false];
+  Proc -> Reg [style=dashed, arrowhead=vee, constraint=false];
+  Proc -> Tipo [style=dashed, arrowhead=vee, constraint=false];
+  Reg -> IF [style=dashed, arrowhead=vee, constraint=false];
+  Tipo -> IF [style=dashed, arrowhead=vee, constraint=false];
+  IF -> EF [dir=back, arrowtail=empty, style=dashed, arrowhead=none];
+  IF -> SF [dir=back, arrowtail=empty, style=dashed, arrowhead=none];
+  EF -> FE [style=dashed, arrowhead=vee, color="#8A8A8A", fontcolor="#6A6A6A"];
+  EF -> CE [style=dashed, arrowhead=vee, color="#8A8A8A", fontcolor="#6A6A6A"];
+  SF -> FS [style=dashed, arrowhead=vee, color="#8A8A8A", fontcolor="#6A6A6A"];
+  SF -> CS [style=dashed, arrowhead=vee, color="#8A8A8A", fontcolor="#6A6A6A"];
+  FE -> Fac [arrowhead=empty, style=dashed];
+  FS -> Fac [arrowhead=empty, style=dashed];
+  CE -> Com [arrowhead=empty, style=dashed];
+  CS -> Com [arrowhead=empty, style=dashed];
+  Fac -> Inf [arrowhead=empty, style=solid];
+  Com -> Inf [arrowhead=empty, style=solid];
+}

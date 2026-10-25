@@ -1,0 +1,15 @@
+== CALIBRACIÓN (modelo vs medición real) ==
+  AF añadir MIXTA (etapa1->2): 2 líneas existentes: modelo=2 real=2 OK
+  AF añadir PEDIDO a ENTRADA (etapa2->3): 17 líneas existentes: modelo=17 real=17 OK
+  AF añadir un tipo NOTA a las 3 categorías (medido en código real): 18 líneas: modelo=18 real=18 OK
+  Registro añadir MIXTA: 3 líneas (import + 2 registrar): modelo=3 real=3 OK
+  Registro añadir PEDIDO a ENTRADA: 1 línea: modelo=1 real=1 OK
+  Sin patrón (MIXTA+PEDIDO juntos): modelo=10 real=10
+  Totales calibrados
+chart ok
+
+== TABLA (C=5, T=3): líneas modificadas en código existente [A, AF, AF+SL, Registro] ==
+  S1 añadir categoría (10, 2, 0, 4)
+  S2 tipo a todas (10, 24, 24, 5)
+  S3 tipo a una (2, 17, 17, 1)
+  C=20,T=20  S1: 44 2 21 | C=20 S2: 40 69 20

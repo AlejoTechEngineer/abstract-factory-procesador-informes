@@ -1,0 +1,23 @@
+# Carpeta local de editables (por si se copia por error)
+_local_editables/
+
+# Archivos editables de Word / Office
+*.docx
+*.doc
+*.dotx
+*.docm
+*.odt
+~$*
+*.tmp
+
+# Comprimidos y artefactos de compilación
+*.zip
+*.class
+out/
+__pycache__/
+*.pyc
+
+# Sistema / IDE
+.DS_Store
+Thumbs.db
+.vscode/
