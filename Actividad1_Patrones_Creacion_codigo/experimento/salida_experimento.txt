@@ -1,12 +1,12 @@
-== CALIBRACIÓN (modelo vs medición real) ==
-  AF añadir MIXTA (etapa1->2): 2 líneas existentes: modelo=2 real=2 OK
-  AF añadir PEDIDO a ENTRADA (etapa2->3): 17 líneas existentes: modelo=17 real=17 OK
-  AF añadir un tipo NOTA a las 3 categorías (medido en código real): 18 líneas: modelo=18 real=18 OK
-  Registro añadir MIXTA: 3 líneas (import + 2 registrar): modelo=3 real=3 OK
-  Registro añadir PEDIDO a ENTRADA: 1 línea: modelo=1 real=1 OK
-  Sin patrón (MIXTA+PEDIDO juntos): modelo=10 real=10
+== CALIBRACIÓN (modelo vs medición calculada desde archivos reales) ==
+  caso | modelo | medido | archivos existentes tocados
+  AF añadir MIXTA (etapa1_base -> etapa2_mixta) | 2 | 2 | 1: FabricaRegistro.java | OK
+  AF añadir PEDIDO a ENTRADA (etapa2_mixta -> etapa3_pedido) | 17 | 17 | 2: EntradaFactory.java, TipoInforme.java | OK
+  AF añadir NOTA a las 3 categorías (etapa3_pedido + nota.patch) | 18 | 18 | 5: EntradaFactory.java, InformeFactory.java, TipoInforme.java, MixtaFactory.java, SalidaFactory.java | OK
+  Registro añadir MIXTA (RegistroInformes v1 -> v2) | 3 | 3 | 1: RegistroInformes.java | OK
+  Registro añadir PEDIDO a ENTRADA (RegistroInformes v2 -> v3) | 1 | 1 | 1: RegistroInformes.java | OK
+  Sin patrón: MIXTA y PEDIDO juntos (método procesarInformes) | 10 | 10 | 1: ProcesadorSinPatronEvolucionado.java (método) | OK
   Totales calibrados
-chart ok
 
 == TABLA (C=5, T=3): líneas modificadas en código existente [A, AF, AF+SL, Registro] ==
   S1 añadir categoría (10, 2, 0, 4)
