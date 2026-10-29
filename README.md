@@ -284,7 +284,7 @@ Abstract Factory gana claramente cuando el cambio es añadir familias, y es el d
    ```bash
    ./probar.sh etapa4b_ajuste
    ```
-5. (Opcional) Reproducir el experimento de escalabilidad (requiere matplotlib):
+5. (Opcional) Reproducir el experimento de escalabilidad (matplotlib solo hace falta con `--grafica <ruta.png>`):
    ```bash
    python3 experimento/escala.py
    ```
@@ -372,7 +372,7 @@ Cifras de producción sin `Main.java`, medidas sobre el código de cada etapa:
 
 Los totales de líneas de producción del informe cuentan todas las líneas de los archivos; los cambios entre etapas (+33/−0 y +38/−2) cuentan solo líneas no vacías, por lo que no son directamente sumables.
 
-Las mediciones de calibración del experimento (experimento/escala.py) se introdujeron a mano a partir de las mediciones reales descritas en el informe.
+Las mediciones de calibración se calculan al ejecutar experimento/escala.py: comparan archivos reales de las etapas y los escenarios guardados en experimento/escenarios/ (nota.patch y las tres versiones del registro). Criterio: líneas añadidas + eliminadas en archivos de producción existentes, incluidas las líneas en blanco.
 
 ---
 

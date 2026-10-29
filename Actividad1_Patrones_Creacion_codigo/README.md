@@ -18,5 +18,6 @@ Sistema para procesar informes con el patrón **Abstract Factory** (familia = ca
 ## Uso (JDK 8+, probado con JDK 17 y 21)
 - Ejecutar una etapa:        `./compilar_ejecutar.sh etapa3_pedido`
 - Pruebas automáticas (29 pruebas con 4 categorías):  `./probar.sh etapa4b_ajuste`
-- Experimento:               `python3 experimento/escala.py`   (requiere matplotlib)
+- Experimento:               `python3 experimento/escala.py`   (calibra contra diffs reales; matplotlib solo con `--grafica <ruta.png>`)
+- Escenarios del experimento: `experimento/escenarios/` (`nota.patch` sobre etapa3_pedido y `registro/RegistroInformes_v1..v3.java`)
 - Comprobar equivalencia:    comparar la salida de `etapa3_pedido` y `etapa5_registro` (idéntica)
