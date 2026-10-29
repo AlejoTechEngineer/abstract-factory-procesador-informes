@@ -2,7 +2,7 @@
 
 # 🏭 Procesador de Informes – Patrón Abstract Factory en Java
 
-### *Familias de informes, evolución medida en etapas, 29 pruebas automáticas y comparación con un diseño alternativo*
+### *Familias de informes, evolución medida en etapas, 29 pruebas automáticas (con 4 categorías) y comparación con un diseño alternativo*
 
 **Asignatura: Reutilización de Software · Fundación Universitaria Internacional de La Rioja (UNIR) · Actividad No. 1**
 
@@ -52,7 +52,7 @@ El proyecto no se queda en la versión inicial: el sistema se **evoluciona en et
 
 > **Problema:** procesar informes de varias categorías y tipos sin que el procesador dependa de las clases concretas.
 > **Enfoque:** Abstract Factory, complementado con Singleton, una interfaz derivada para PEDIDO y `ServiceLoader`.
-> **Alcance:** 6 etapas + versiones sin patrón → 29 pruebas automáticas → experimento de escalabilidad calibrado → comparación con un registro por clave.
+> **Alcance:** 6 etapas + versiones sin patrón → 29 pruebas automáticas (con 4 categorías) → experimento de escalabilidad calibrado → comparación con un registro por clave.
 
 ### 🌟 ¿Qué demuestra este proyecto?
 
@@ -60,7 +60,7 @@ El proyecto no se queda en la versión inicial: el sistema se **evoluciona en et
 - ➕ **Familia nueva sin tocar el cliente**: MIXTA se añade con 3 clases nuevas y 2 líneas en el registro de fábricas.
 - ⚠️ **El punto débil, medido**: añadir el producto PEDIDO obliga a modificar código existente (17 líneas).
 - 🔌 **Reutilización sin modificación**: con `ServiceLoader`, la categoría AJUSTE entra sin cambiar **ninguna línea de Java existente**.
-- 🧪 **29 pruebas automáticas**, incluida una **prueba de arquitectura** que falla si el cliente vuelve a depender de clases concretas.
+- 🧪 **29 pruebas automáticas** (con 4 categorías), incluida una **prueba de arquitectura** que falla si el cliente vuelve a depender de clases concretas.
 - ⚖️ **Comparación honesta**: una alternativa por registro por clave produce una salida idéntica a la etapa 3 con menos código.
 
 ---
@@ -80,7 +80,7 @@ El proyecto no se queda en la versión inicial: el sistema se **evoluciona en et
   <tr><td><code>etapa1_base/</code></td><td>🧱 <b>Sistema base</b> (Ejercicio 2): categorías ENTRADA y SALIDA, tipos FACTURA y COMPRA · 15 archivos <code>.java</code></td></tr>
   <tr><td><code>etapa2_mixta/</code></td><td>➕ <b>Evolución 1</b> (Ejercicio 3): nueva categoría MIXTA · 18 archivos <code>.java</code></td></tr>
   <tr><td><code>etapa3_pedido/</code></td><td>➕ <b>Evolución 2</b> (Ejercicio 3): nuevo tipo PEDIDO solo en ENTRADA, mediante la interfaz derivada <code>InformeFactoryConPedido</code> · 21 archivos <code>.java</code></td></tr>
-  <tr><td><code>etapa4_servicios/</code></td><td>🔌 Categorías descubiertas con <code>ServiceLoader</code> y suite de <b>29 pruebas</b> · 26 archivos <code>.java</code></td></tr>
+  <tr><td><code>etapa4_servicios/</code></td><td>🔌 Categorías descubiertas con <code>ServiceLoader</code> y suite de pruebas automáticas (<b>24 pruebas</b> con 3 categorías) · 26 archivos <code>.java</code></td></tr>
   <tr><td><code>etapa4b_ajuste/</code></td><td>🧩 Nueva categoría AJUSTE añadida <b>sin modificar ninguna línea de Java existente</b> · 30 archivos <code>.java</code></td></tr>
   <tr><td><code>etapa5_registro/</code></td><td>⚖️ Alternativa sin Abstract Factory (registro por clave), con salida idéntica a la etapa 3</td></tr>
   <tr><td><code>sinpatron/</code></td><td>🧪 <code>ProcesadorSinPatronBase.java</code> y <code>ProcesadorSinPatronEvolucionado.java</code>: el mismo problema resuelto con condicionales, para comparar (Ejercicio 1)</td></tr>
@@ -355,6 +355,24 @@ Para comprobar que la prueba de arquitectura no es decorativa, se inyectó una v
 ## 📝 Nota
 
 Este proyecto corresponde a una **actividad académica** y se elaboró con fines exclusivamente formativos. Los informes que procesa el sistema son nombres de archivo de ejemplo.
+
+---
+
+## Notas de medición
+
+Cifras de producción sin `Main.java`, medidas sobre el código de cada etapa:
+
+| Medida | Etapa 1 (base) | Etapa 2 (+ MIXTA) | Etapa 3 (+ PEDIDO) |
+|:---|:---:|:---:|:---:|
+| Archivos de producción (sin `Main`) | 14 | 17 | 20 |
+| (a) Líneas de producción, todas las líneas del archivo | 261 | 306 | 348 |
+| (b) Líneas de producción, solo no vacías | 205 | 238 | 274 |
+| Cambio respecto a la etapa anterior, solo líneas no vacías | — | +33 / −0 | +38 / −2 |
+| Cambio respecto a la etapa anterior, todas las líneas | — | +45 / −0 | +44 / −2 |
+
+Los totales de líneas de producción del informe cuentan todas las líneas de los archivos; los cambios entre etapas (+33/−0 y +38/−2) cuentan solo líneas no vacías, por lo que no son directamente sumables.
+
+Las mediciones de calibración del experimento (experimento/escala.py) se introdujeron a mano a partir de las mediciones reales descritas en el informe.
 
 ---
 

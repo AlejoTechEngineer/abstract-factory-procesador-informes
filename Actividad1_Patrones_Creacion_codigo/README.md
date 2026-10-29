@@ -17,6 +17,6 @@ Sistema para procesar informes con el patrón **Abstract Factory** (familia = ca
 
 ## Uso (JDK 8+, probado con JDK 17 y 21)
 - Ejecutar una etapa:        `./compilar_ejecutar.sh etapa3_pedido`
-- Pruebas automáticas (29):  `./probar.sh etapa4b_ajuste`
+- Pruebas automáticas (29 pruebas con 4 categorías):  `./probar.sh etapa4b_ajuste`
 - Experimento:               `python3 experimento/escala.py`   (requiere matplotlib)
 - Comprobar equivalencia:    comparar la salida de `etapa3_pedido` y `etapa5_registro` (idéntica)
