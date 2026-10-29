@@ -8,7 +8,7 @@ Sistema para procesar informes con el patrón **Abstract Factory** (familia = ca
 | etapa1_base | Ejercicio 2: ENTRADA/SALIDA x FACTURA/COMPRA |
 | etapa2_mixta | Ejercicio 3: + categoría MIXTA |
 | etapa3_pedido | Ejercicio 3: + tipo PEDIDO en ENTRADA (versión del enunciado) |
-| sinpatron | Ejercicio 1: versiones sin patrón (`java Archivo.java`) |
+| sinpatron | Ejercicio 1: versiones sin patrón (`javac -encoding UTF-8 Archivo.java && java Archivo`) |
 | etapa4_servicios | Cap. 5: categorías descubiertas con ServiceLoader + suite de pruebas |
 | etapa4b_ajuste | Cap. 5: + categoría AJUSTE sin modificar ninguna línea Java existente |
 | etapa5_registro | Cap. 5: alternativa por registro (salida idéntica a etapa3) |
