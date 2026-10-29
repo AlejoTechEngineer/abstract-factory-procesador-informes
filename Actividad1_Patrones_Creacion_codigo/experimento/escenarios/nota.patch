@@ -1,0 +1,156 @@
+diff --git a/src/informes/entrada/EntradaFactory.java b/src/informes/entrada/EntradaFactory.java
+index df86686..02af1aa 100644
+--- a/src/informes/entrada/EntradaFactory.java
++++ b/src/informes/entrada/EntradaFactory.java
+@@ -3,6 +3,7 @@ package informes.entrada;
+ import informes.fabrica.InformeFactoryConPedido;
+ import informes.modelo.Compra;
+ import informes.modelo.Factura;
++import informes.modelo.Nota;
+ import informes.modelo.Pedido;
+ 
+ /** Fábrica concreta 1: familia de informes de ENTRADA (implementada como Singleton). */
+@@ -20,5 +21,7 @@ public final class EntradaFactory implements InformeFactoryConPedido {
+ 
+     @Override public Compra crearCompra(String nombre) { return new CompraEntrada(nombre); }
+ 
++    @Override public Nota crearNota(String nombre) { return new NotaEntrada(nombre); }
++
+     @Override public Pedido crearPedido(String nombre) { return new PedidoEntrada(nombre); }
+ }
+diff --git a/src/informes/entrada/NotaEntrada.java b/src/informes/entrada/NotaEntrada.java
+new file mode 100644
+index 0000000..2be8afa
+--- /dev/null
++++ b/src/informes/entrada/NotaEntrada.java
+@@ -0,0 +1,11 @@
++package informes.entrada;
++
++import informes.modelo.InformeBase;
++import informes.modelo.Nota;
++
++public class NotaEntrada extends InformeBase implements Nota {
++    public NotaEntrada(String nombre) { super(nombre); }
++    @Override public String getCategoria() { return "ENTRADA"; }
++    @Override public String getTipo() { return "NOTA"; }
++    @Override public void procesar() { trazar("Registrando la nota de entrada"); }
++}
+diff --git a/src/informes/fabrica/InformeFactory.java b/src/informes/fabrica/InformeFactory.java
+index bc5cf76..e138690 100644
+--- a/src/informes/fabrica/InformeFactory.java
++++ b/src/informes/fabrica/InformeFactory.java
+@@ -2,6 +2,7 @@ package informes.fabrica;
+ 
+ import informes.modelo.Compra;
+ import informes.modelo.Factura;
++import informes.modelo.Nota;
+ 
+ /**
+  * Fábrica abstracta: una implementación por CATEGORÍA de informe.
+@@ -14,4 +15,6 @@ public interface InformeFactory {
+     Factura crearFactura(String nombre);
+ 
+     Compra crearCompra(String nombre);
++
++    Nota crearNota(String nombre);
+ }
+diff --git a/src/informes/fabrica/TipoInforme.java b/src/informes/fabrica/TipoInforme.java
+index 1da1110..b36b7f4 100644
+--- a/src/informes/fabrica/TipoInforme.java
++++ b/src/informes/fabrica/TipoInforme.java
+@@ -21,6 +21,12 @@ public enum TipoInforme {
+             return fabrica.crearCompra(nombre);
+         }
+     },
++    NOTA("NOT") {
++        @Override
++        public Informe crear(InformeFactory fabrica, String nombre) {
++            return fabrica.crearNota(nombre);
++        }
++    },
+     PEDIDO("PED") {
+         @Override
+         public Informe crear(InformeFactory fabrica, String nombre) {
+diff --git a/src/informes/mixta/MixtaFactory.java b/src/informes/mixta/MixtaFactory.java
+index d74d1e2..805134d 100644
+--- a/src/informes/mixta/MixtaFactory.java
++++ b/src/informes/mixta/MixtaFactory.java
+@@ -3,6 +3,7 @@ package informes.mixta;
+ import informes.fabrica.InformeFactory;
+ import informes.modelo.Compra;
+ import informes.modelo.Factura;
++import informes.modelo.Nota;
+ 
+ /** Fábrica concreta 3: familia de informes MIXTA (nueva categoría). */
+ public final class MixtaFactory implements InformeFactory {
+@@ -18,4 +19,6 @@ public final class MixtaFactory implements InformeFactory {
+     @Override public Factura crearFactura(String nombre) { return new FacturaMixta(nombre); }
+ 
+     @Override public Compra crearCompra(String nombre) { return new CompraMixta(nombre); }
++
++    @Override public Nota crearNota(String nombre) { return new NotaMixta(nombre); }
+ }
+diff --git a/src/informes/mixta/NotaMixta.java b/src/informes/mixta/NotaMixta.java
+new file mode 100644
+index 0000000..f2b0b0a
+--- /dev/null
++++ b/src/informes/mixta/NotaMixta.java
+@@ -0,0 +1,11 @@
++package informes.mixta;
++
++import informes.modelo.InformeBase;
++import informes.modelo.Nota;
++
++public class NotaMixta extends InformeBase implements Nota {
++    public NotaMixta(String nombre) { super(nombre); }
++    @Override public String getCategoria() { return "MIXTA"; }
++    @Override public String getTipo() { return "NOTA"; }
++    @Override public void procesar() { trazar("Registrando la nota de mixta"); }
++}
+diff --git a/src/informes/modelo/Nota.java b/src/informes/modelo/Nota.java
+new file mode 100644
+index 0000000..a834763
+--- /dev/null
++++ b/src/informes/modelo/Nota.java
+@@ -0,0 +1,5 @@
++package informes.modelo;
++
++/** Producto abstracto D (escenario del experimento): informes de tipo NOTA. */
++public interface Nota extends Informe {
++}
+diff --git a/src/informes/salida/NotaSalida.java b/src/informes/salida/NotaSalida.java
+new file mode 100644
+index 0000000..6adf29e
+--- /dev/null
++++ b/src/informes/salida/NotaSalida.java
+@@ -0,0 +1,11 @@
++package informes.salida;
++
++import informes.modelo.InformeBase;
++import informes.modelo.Nota;
++
++public class NotaSalida extends InformeBase implements Nota {
++    public NotaSalida(String nombre) { super(nombre); }
++    @Override public String getCategoria() { return "SALIDA"; }
++    @Override public String getTipo() { return "NOTA"; }
++    @Override public void procesar() { trazar("Registrando la nota de salida"); }
++}
+diff --git a/src/informes/salida/SalidaFactory.java b/src/informes/salida/SalidaFactory.java
+index 955fae2..a942739 100644
+--- a/src/informes/salida/SalidaFactory.java
++++ b/src/informes/salida/SalidaFactory.java
+@@ -3,6 +3,7 @@ package informes.salida;
+ import informes.fabrica.InformeFactory;
+ import informes.modelo.Compra;
+ import informes.modelo.Factura;
++import informes.modelo.Nota;
+ 
+ /** Fábrica concreta 2: familia de informes de SALIDA (implementada como Singleton). */
+ public final class SalidaFactory implements InformeFactory {
+@@ -18,4 +19,6 @@ public final class SalidaFactory implements InformeFactory {
+     @Override public Factura crearFactura(String nombre) { return new FacturaSalida(nombre); }
+ 
+     @Override public Compra crearCompra(String nombre) { return new CompraSalida(nombre); }
++
++    @Override public Nota crearNota(String nombre) { return new NotaSalida(nombre); }
+ }
