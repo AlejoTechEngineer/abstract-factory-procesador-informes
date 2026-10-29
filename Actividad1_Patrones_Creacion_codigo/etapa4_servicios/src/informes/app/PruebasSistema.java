@@ -5,8 +5,10 @@ import informes.fabrica.TipoInforme;
 import informes.modelo.Informe;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 /**
@@ -29,7 +31,7 @@ public class PruebasSistema {
     }
 
     public static void main(String[] args) throws IOException {
-        Path fuentes = Path.of(args.length > 0 ? args[0] : "src/informes/app");
+        Path fuentes = Paths.get(args.length > 0 ? args[0] : "src/informes/app");
         ProcesadorInformes p = new ProcesadorInformes();
 
         System.out.println("== P1. Coherencia: cada fábrica solo produce informes de su categoría ==");
@@ -70,13 +72,13 @@ public class PruebasSistema {
 
         System.out.println("== P5. Arquitectura: el cliente no depende de clases concretas ==");
         for (String archivo : new String[]{"ProcesadorInformes.java", "FabricaRegistro.java"}) {
-            String src = Files.readString(fuentes.resolve(archivo));
+            String src = new String(Files.readAllBytes(fuentes.resolve(archivo)), StandardCharsets.UTF_8);
             check(archivo + " no importa paquetes de categorías concretas",
                   !Pattern.compile("import\\s+informes\\.(entrada|salida|mixta|ajuste)").matcher(src).find());
             check(archivo + " no instancia productos concretos con new",
                   !Pattern.compile("new\\s+(Factura|Compra|Pedido)\\w+").matcher(src).find());
         }
-        String cliente = Files.readString(fuentes.resolve("ProcesadorInformes.java"));
+        String cliente = new String(Files.readAllBytes(fuentes.resolve("ProcesadorInformes.java")), StandardCharsets.UTF_8);
         check("ProcesadorInformes no compara categorías ni tipos con equals()",
               !Pattern.compile("\\.equals\\(\\s*\"").matcher(cliente).find());
 
